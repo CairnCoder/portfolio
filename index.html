@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +7,147 @@
   <meta name="description" content="Short page description">
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+  <style>
+    .scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+    .scroll-container {
+      scrollbar-width: none;
+    }
+
+    .card-width {
+      width: 18rem;
+    }
+
+    @media (min-width: 1200px) {
+      .container-md { max-width: 960px; }
+    }
+
+
+    .scroll-overlay{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3rem;
+      border: 0;
+      padding: 0;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      z-index: 2;
+      color: rgba(0,0,0,0.8);
+      font-size: 3rem;
+    }
+    /* right fade */
+    .scroll-overlay.end-0 {
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      -webkit-mask-image: linear-gradient(to left,black 0%,transparent 100%);
+      mask-image: linear-gradient(to left,black 0%,transparent 100%);
+      justify-items: end;
+      padding-right: .4rem;
+    }
+    
+    /* left fade */
+    .scroll-overlay.start-0{
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      -webkit-mask-image: linear-gradient(to right,black 0%,transparent 100%);
+      mask-image: linear-gradient(to right,black 0%,transparent 100%);
+      justify-items: start;
+      padding-left: .4rem;
+    }
+    .scroll-overlay span {
+      transition: transform 0.15s ease;
+      color: var(--bs-primary);
+    }
+    .scroll-overlay:hover span {
+      transform: scale(1.3);
+    }
+
+    .clamp {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4; /* number of lines */
+    }
+
+    /*#navId .nav-link:focus,
+    #navId .nav-link:focus-visible {
+      color: rgba(var(--bs-white-rgb), .85);
+      box-shadow: none;
+      outline: none;
+    }*/
+
+    .soft-bottom {
+      /* Soft bottom fade */
+      -webkit-mask-image: linear-gradient(to bottom, white calc(100% - 2rem), transparent 100%);
+      mask-image: linear-gradient(to bottom, white calc(100% - 2rem), transparent 100%);
+    }
+
+    #navId {
+      white-space: nowrap;
+    }
+
+    #navId::-webkit-scrollbar {
+      display: none;
+    }
+    #navId .nav-item {
+      flex: 0 0 auto;        /* mobile: don't shrink */
+    }
+
+    @media (min-width: 730px) {  /* lg breakpoint */
+      #navId .nav-item {
+        flex: 1 1 0;        /* allow nav-fill behaviour */
+      }
+    }
+  </style>
+
 </head>
-<body class="vh-100 d-flex flex-column overflow-hidden"> <!-- class="vh-100 d-flex flex-column"> -->
-  <!-- Title -->
-  
+<body class="bg-body-tertiary"> <!--class="vh-100 d-flex flex-column overflow-hidden container-xxl">  class="vh-100 d-flex flex-column"> -->
   <!-- nav -->
-  <ul id="navId" class="nav nav-pills nav-fill gap-2 p-1 m-3 small bg-primary rounded-5 shadow" role="tablist" style="--bs-nav-link-color: rgba(var(--bs-white-rgb), 0.75); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active rounded-5" href="#welcome" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Welcome</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link rounded-5" href="#projects" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Projects</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link rounded-5" href="#attitudes" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Attitudes</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link rounded-5" href="#skills" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Code skill</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link rounded-5" href="#achievements" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Other achievements</a>
-    </li>
-  </ul>
-<!-- flex-grow-1 overflow-auto -->
-  <div class="flex-grow-1 overflow-auto px-3" style="overflow-y: scroll;" data-bs-spy="scroll" data-bs-target="#navId" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+  <div class="container-md position-fixed top-0 start-50 translate-middle-x z-3 soft-bottom" style="background: var(--bs-tertiary-bg); padding-top: 1rem; padding-bottom: 2rem;">
+    <ul id="navId" class="nav nav-pills
+            flex-nowrap overflow-auto nav-fill
+             gap-2 p-1 rounded-5
+             small bg-primary shadow" role="tablist" style="scrollbar-width: none; --bs-nav-link-color: rgba(var(--bs-white-rgb), 0.75); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active rounded-5" href="#welcome" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Welcome</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link rounded-5" href="#projects" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Projects</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link rounded-5" href="#attitudes" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Attitudes</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link rounded-5" href="#skills" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">IT skills</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link rounded-5" href="#achievements" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Other achievements</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link rounded-5" href="#links" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Useful links</a>
+      </li>
+      <li role="presentation">
+        <button id="themeButton" class="btn btn-primary rounded-5" data-bs-toggle="tab">
+          <i id="themeIcon" class="bi bi-sun"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+<!--data-bs-smooth-scroll="true"-->
+  <div class="container-md scrollspy-example h-100" data-bs-spy="scroll" data-bs-target="#navId" tabindex="0" style="padding-top: 5rem;">
     <!-- Intro paragraph -->
-    <div id="welcome">
-      <h2>Welcome</h2>
+    <div>
+      <h1 id="welcome" style="font-size: 3rem;">Welcome</h1>
+      <hr>
+      <h2>Introduction</h2>
       <p>I learned to code through the UK BBC Microbit initiative back in 2017 (ish). Since then I have learned alot and done various personal projects, only a few of which are listed here. They are at different stages of completion and size. Some have effective commentory while others are sparse. There is a tendency for UI development, but only because those projects can be used in daily life.</p>
+      <p>This is not meant to be a CV, plus I have specifically excluded my true name.</p>
       <b>Please remember:</b>
       <ul>
         <li>I don't have a Computer Science degree, but did take some Physics/Maths programming modules at university.</li>
@@ -44,103 +157,246 @@
         <li>Academic projects are not listed here.</li>
       </ul>
     </div>
+    <hr>
 
     <!-- Projects -->
-    <div id="projects">
-      <h2>Projects</h2>
+    <div>
+      <h2 id="projects">Projects</h2>
       <!-- https://getbootstrap.com/docs/5.3/components/card/ -->
       <!-- Existing -->
-      <h3>Existing</h3>
-      <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <!-- class="d-block w-100" -->
+      <div class="position-relative">
 
-          </div>
-          <div class="carousel-item">
-
-          </div>
-          <div class="carousel-item">
-
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+        <!-- Left overlay -->
+        <button id="scrollLeft"
+                class="scroll-overlay start-0"
+                type="button" aria-label="Scroll left">
+          <span>‹</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    
 
-      <!-- Planned -->
-      <h3>Planned</h3>
-      <div class="card" style="width: 18rem;">
-        <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <!-- Right overlay -->
+        <button id="scrollRight"
+                class="scroll-overlay end-0"
+                type="button" aria-label="Scroll right">
+          <span>›</span>
+        </button>
+
+        <div id="hscroll" class="d-flex overflow-auto flex-nowrap gap-3 scroll-container align-items-stretch">
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text clamp">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+              <a href="#" class="btn btn-primary">See in GitHub</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text clamp">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+              <a href="#" class="btn btn-primary">See in GitHub</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text clamp">Some quick Some quick example text to build on the card titlSome quick example text to build on the card titlSome quick example text to build on the card titlexample text to build on the card title and make up the bulk of the card’s content.</p>
+              <a href="#" class="btn btn-primary">See in GitHub</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title"><s>Card title</s></h5>
+              <p class="card-text clamp"><s>Some quick example text to build on the card title and make up the bulk of the card’s content.</s></p>
+              <a href="" class="btn btn-outline-primary disabled">Cancelled</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text clamp">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+              <a href="#" class="btn btn-primary">See in GitHub</a>
+            </div>
+          </div>
+
+          <div class="card flex-shrink-0 d-flex flex-column card-width">
+            <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text clamp">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+              <a href="#" class="btn btn-primary">See in GitHub</a>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="card" style="width: 18rem;">
-        <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-      <!-- Canceled -->
-      <h3>Canceled</h3>
 
     </div>
+    <hr>
 
     <!-- Attitudes -->
-     <div id="attitudes">
-      <h2>Attitudes</h2>
+     <div>
+      <h2 id="attitudes">Attitudes</h2>
       <ul>
         <li><b>I believe in well documented code</b>, for one's own sanity a few years later and for other people: inline comments, function definition messages, summaries of intended task.</li>
         <li><b>I believe in time efficiency</b>, thus comments should only be done once the final version is well defined.</li>
         <li><b>I believe in simplicity</b>, it is less prone to error, faster to understand, and easier to alter. Ideal simple solutions might not be immediately obvious and thus we must value the progress made to reach them.</li>
         <li><b>I believe that there is no point repeating what other people have already done</b>, if the tools are there, just use them; don't waist your time in replicating them unless you have a good reason.</li>
       </ul>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
     </div>
+    <hr>
 
     <!-- Skill -->
-    <div id="skills">
-      <h2 id="">Code skills</h2>
-
-      <p id="skills">I now regularly use AI tools to accelerate my programming. It can't do everything: it gets things wrong, fails with niche areas of information, but excels with well known information (mostly). As the saying goes "Your job won't be replace by AI. Instead it will be replaced by the person who can use AI <b>effectively</b>."</p>
+    <div>
+      <h2 id="skills">IT skill</h2>
+      <p>This list is not exhaustive.</p>
+      <p>I now regularly use generative AI tools to accelerate my programming. It can't do everything: it gets things wrong, fails with niche areas of information, but excels with well known information (mostly). As the saying goes "Your job won't be replace by AI. Instead it will be replaced by the person who can use AI <b>effectively</b>."</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
+      <p>t</p>
     </div>
+    <hr>
 
     <!-- Achievements -->
-    <div id="achievements">
-      <h2 id="">Other achievements</h2>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
-      <p>h\n\n</p>
+    <div>
+      <h2 id="achievements">Other achievements</h2>
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-auto">
+              <img src="Screenshot_20260219_232543_Duolingo.jpg" class="img-fluid rounded-start" style="height: 30rem;" alt="Screenshot showing my 550 day streak on Duolingo.">
+            </div>
+            <div class="col">
+              <div class="card-body">
+                <h5 class="card-title">Language learning</h5>
+                <p class="card-text">550 day Duolingo streak. <br> Includes: Mandarin Chinese, Swedish, German.</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated 19th February 2026</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
+    <hr>
+
+    <!-- Achievements -->
+    <div>
+      <h2 id="links">Useful links</h2>
+
+      <h5>Technical</h5>
+      <ul style="list-style: none;">
+        <li>
+          <a class="icon-link icon-link-hover" href="https://www.wiisfi.com/">
+            WiisFi - Understanding Wi-Fi 4/5/6/6E/7/8 (802.11 n/ac/ax/be/bn)
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="icon-link icon-link-hover" href="https://earth.nullschool.net/#current/wind/surface/level/">
+            Global projections (weather)
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <h5>Sport</h5>
+
+      <ul style="list-style: none;">
+        <li>
+          <a class="icon-link icon-link-hover" href="https://www.maprunner.co.uk/">
+            Maprunner
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a class="icon-link icon-link-hover" href="https://mpickering.github.io/maps.html">
+            UK Routegadget maps on OSM
+            <svg xmlns="http://www.w3.org/2000/svg" class="bi" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+
+    </div>
+    <hr>
 
     <!-- Footnotes -->
     <p>
-    &copy; 2026 CairnCoder
-    <br>
-    Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3.8</a>
+    &copy; 2026 CairnCoder | Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3.8</a>
     </p>
 
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    const scroller = document.getElementById('hscroll');
+    const leftBtn = document.getElementById('scrollLeft');
+    const rightBtn = document.getElementById('scrollRight');
+
+    function updateOverlays() {
+      const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+      leftBtn.classList.toggle('d-none', scroller.scrollLeft <= 0);
+      rightBtn.classList.toggle('d-none', scroller.scrollLeft >= maxScrollLeft - 1);
+    }
+
+    function scrollByAmount(dir) {
+      // scroll by ~80% of container width
+      const amount = scroller.clientWidth * 0.8 * dir;
+      scroller.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+
+    leftBtn.addEventListener('click', () => scrollByAmount(-1));
+    rightBtn.addEventListener('click', () => scrollByAmount(1));
+    scroller.addEventListener('scroll', updateOverlays);
+    window.addEventListener('resize', updateOverlays);
+
+    updateOverlays();
+  </script>
+  <!-- <script>
+    // Set top padding to match the header height (works if header height changes responsively)
+    const topbar = document.getElementById('navId').parentElement;
+    const content = document.getElementById('content');
+
+    function syncPadding() {
+      content.style.marginTop = topbar.offsetHeight + 'px';
+    }
+
+    window.addEventListener('resize', syncPadding);
+    syncPadding();
+  </script> -->
+  <script>
+    const root = document.documentElement;
+    document.getElementById('themeButton').addEventListener('click', () => {
+        root.dataset.bsTheme = root.dataset.bsTheme === 'dark' ? 'light' : 'dark';
+        document.getElementById('themeIcon').classList = root.dataset.bsTheme === 'light' ? 'bi-sun' : 'bi-moon';
+      });
+  </script>
 </body>
 </html>
