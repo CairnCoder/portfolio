@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title</title>
+  <meta name="description" content="Short page description">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="vh-100 d-flex flex-column overflow-hidden"> <!-- class="vh-100 d-flex flex-column"> -->
+  <!-- Title -->
+  
+  <!-- nav -->
+  <ul id="navId" class="nav nav-pills nav-fill gap-2 p-1 m-3 small bg-primary rounded-5 shadow" role="tablist" style="--bs-nav-link-color: rgba(var(--bs-white-rgb), 0.75); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active rounded-5" href="#welcome" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Welcome</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link rounded-5" href="#projects" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Projects</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link rounded-5" href="#attitudes" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Attitudes</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link rounded-5" href="#skills" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Code skill</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link rounded-5" href="#achievements" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">Other achievements</a>
+    </li>
+  </ul>
+<!-- flex-grow-1 overflow-auto -->
+  <div class="flex-grow-1 overflow-auto px-3" style="overflow-y: scroll;" data-bs-spy="scroll" data-bs-target="#navId" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+    <!-- Intro paragraph -->
+    <div id="welcome">
+      <h2>Welcome</h2>
+      <p>I learned to code through the UK BBC Microbit initiative back in 2017 (ish). Since then I have learned alot and done various personal projects, only a few of which are listed here. They are at different stages of completion and size. Some have effective commentory while others are sparse. There is a tendency for UI development, but only because those projects can be used in daily life.</p>
+      <b>Please remember:</b>
+      <ul>
+        <li>I don't have a Computer Science degree, but did take some Physics/Maths programming modules at university.</li>
+        <li>I do have a life outside of coding and can thus only code in my spare time.</li>
+        <li>I have an understanding of coding structures upto class inheritance, pointers, etc, and an idea of basic algorithms.</li>
+        <li>I will continue to add personal projects.</li>
+        <li>Academic projects are not listed here.</li>
+      </ul>
+    </div>
+
+    <!-- Projects -->
+    <div id="projects">
+      <h2>Projects</h2>
+      <!-- https://getbootstrap.com/docs/5.3/components/card/ -->
+      <!-- Existing -->
+      <h3>Existing</h3>
+      <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <!-- class="d-block w-100" -->
+
+          </div>
+          <div class="carousel-item">
+
+          </div>
+          <div class="carousel-item">
+
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    
+
+      <!-- Planned -->
+      <h3>Planned</h3>
+      <div class="card" style="width: 18rem;">
+        <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="Braids.jpg" class="card-img-top" alt="Braids.jpg">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <!-- Canceled -->
+      <h3>Canceled</h3>
+
+    </div>
+
+    <!-- Attitudes -->
+     <div id="attitudes">
+      <h2>Attitudes</h2>
+      <ul>
+        <li><b>I believe in well documented code</b>, for one's own sanity a few years later and for other people: inline comments, function definition messages, summaries of intended task.</li>
+        <li><b>I believe in time efficiency</b>, thus comments should only be done once the final version is well defined.</li>
+        <li><b>I believe in simplicity</b>, it is less prone to error, faster to understand, and easier to alter. Ideal simple solutions might not be immediately obvious and thus we must value the progress made to reach them.</li>
+        <li><b>I believe that there is no point repeating what other people have already done</b>, if the tools are there, just use them; don't waist your time in replicating them unless you have a good reason.</li>
+      </ul>
+    </div>
+
+    <!-- Skill -->
+    <div id="skills">
+      <h2 id="">Code skills</h2>
+
+      <p id="skills">I now regularly use AI tools to accelerate my programming. It can't do everything: it gets things wrong, fails with niche areas of information, but excels with well known information (mostly). As the saying goes "Your job won't be replace by AI. Instead it will be replaced by the person who can use AI <b>effectively</b>."</p>
+    </div>
+
+    <!-- Achievements -->
+    <div id="achievements">
+      <h2 id="">Other achievements</h2>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+      <p>h\n\n</p>
+    </div>
+
+    <!-- Footnotes -->
+    <p>
+    &copy; 2026 CairnCoder
+    <br>
+    Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3.8</a>
+    </p>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
