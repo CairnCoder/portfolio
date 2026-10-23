@@ -51,3 +51,8 @@ Attributes
 
 ## Page colour scheme
 Blue buttons, white text in buttons  
+
+## Other items
+
+### Scroll
+Scrolling possible from anywhere on the page, including over the fixed top nav - uses native document scrolling, with the browser scrollbar spanning the full window height. top nav which stays pinned while the content scrolls beneath it.
