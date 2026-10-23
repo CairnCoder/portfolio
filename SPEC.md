@@ -13,6 +13,7 @@ Fixed to the top of the window.
 Section highlights depending on page part in view - use Bootstrap ScrollSpy.  
 Nav link to whole section of page, not single lines.  
 Active nav item is scrolled into view horizontally in the bar when it overflows.  
+Have colour theme toggle always visible on right of nav bar.  
 
 ## Page content
 
