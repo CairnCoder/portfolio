@@ -20,8 +20,9 @@ Please note comments
 
 
 ### Project list
-Carousel of projects tiles - using prebuilt tools  
-Each project has image, name, description, link to github page  
+Carousel of projects tiles  
+Carousel to use a prebuilt tool - using Swiper (prebuilt, via CDN) for scrolling, arrows and swipe.  
+Project tiles to have: image, name, description, link to github page - using Bootstrap card tile.  
 
 
 ### Attitudes
