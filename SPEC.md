@@ -5,7 +5,7 @@ Link to published page: <a href="https://cairncoder.github.io/portfolio/">https:
 # SPEC
 ## Top nav bar
 Word per section  
-If over spill, have arrows on either end that allows the user to see to the left and right  
+If over spill on left or right, have arrows & fade on the relevant end that indicates and allows the user to move the relevant direction.  
 Dark/light mode button always present at right end of bar.  
 Highlighted item corresponds to the part of the page in view.  
 Use Bootstrap nav-pills list.  
