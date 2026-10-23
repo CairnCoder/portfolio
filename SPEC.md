@@ -34,8 +34,9 @@ Bullet point sentences with important parts in bold
 
 
 ### Other achievements
-Carousel of achievements tiles - using prebuilt tools  
-Each project has image, name, description, date  
+Carousel of achievements tiles  
+Carousel to use a prebuilt tool - using Swiper (prebuilt, via CDN) for scrolling, arrows and swipe.  
+Achievement tiles to have: image, name, description, date - using Bootstrap card tile.  
 
 
 ### Useful links
